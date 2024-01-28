@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-attachment: fixed;
+    color: #333;
+    text-align: center;
+    padding: 50px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    padding: 20px;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="email"], input[type="password"] {
+    width: calc(100% - 20px); /* Adjust width to allow for padding */
+    padding: 10px;
+    margin: 10px 0; /* This ensures consistent space above and below each input */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* This ensures padding is included in the width */
+}
+
+
+input[type="submit"], button {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #0056b3;
+}
+
+input[type="submit"], button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #008CBA; /* A pleasant blue shade */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #005f73; /* A darker blue shade for the hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+input[type="submit"]:active, button:active {
+    transform: translateY(2px); /* Gives a feeling of the button being pressed */
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Additional Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}
+
+    </style>
+    <script>
+        function handleLogin() {
+            var selectedRole = document.querySelector('input[name="role"]:checked').value;
+            switch (selectedRole) {
+                case 'borrower':
+                    window.location.href = '/borrower.html';
+                    break;
+                case 'lender':
+                    window.location.href = '/lender.html';
+                    break;
+                case 'admin':
+                    window.location.href = '/admin-dashboard.html';
+                    break;
+            }
+            return false; // Prevent default form submission
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <div class="role-selector">
+            <input type="radio" id="admin" name="role" value="admin">
+            <label for="admin">Admin</label><br>
+
+            <input type="radio" id="borrower" name="role" value="borrower">
+            <label for="borrower">Borrower</label><br>
+
+            <input type="radio" id="lender" name="role" value="lender">
+            <label for="lender">Lender</label>
+        </div>
+
+        <form action="/submit-your-login-form" method="post" onsubmit="return handleLogin();">
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <input type="submit" value="Login">
+        </form>
+
+        <button onclick="location.href='/register-page-url'">Register</button>
+        <div class="attribution">
+            Application made by <a href="https://github.com/GatikM" target="_blank">Gatik Madaan</a>
+        </div>
+    </div>
+</body>
+</html>
